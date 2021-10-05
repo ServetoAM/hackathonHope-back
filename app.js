@@ -7,7 +7,7 @@ const nodemailer = require("nodemailer");
 
 
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 3000;
 
 connection.connect((err) => {
   if (err) {
@@ -68,8 +68,6 @@ app.post("/contact", cors(), async (req, res) => {
         ">
         <h2>On vous a contacté!</h2>
         <p>"${message}"</p>
-    
-        <p>All the best, Darwin</p>
          </div>
     `
 	})
