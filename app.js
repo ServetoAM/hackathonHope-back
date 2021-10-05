@@ -45,7 +45,7 @@ app.get("/", (req, res) => {
 // });
 
 app.post("/contact", cors(), async (req, res) => {
-	let { message } = req.body
+	let { motifs, message } = req.body
 	const transport = nodemailer.createTransport({
 		host: process.env.MAIL_HOST,
 		port: process.env.MAIL_PORT,
@@ -67,7 +67,7 @@ app.post("/contact", cors(), async (req, res) => {
         font-size: 20px; 
         ">
         <h2>On vous a contacté!</h2>
-        <p>"${message}"</p>
+        <p>"${motifs} ${message}"</p>
          </div>
     `
 	})
