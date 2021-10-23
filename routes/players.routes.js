@@ -28,17 +28,17 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const { player_name, picture_player, firstname, lastname, qualities, palmares, quotes, age, occupation, description_player, other_games, discord, twitter, facebook, instagram, tiktok, twitch } = req.body;
+  const { player_name, picture_player, firstname, lastname, qualities, palmares, quotes, age, occupation, description_player, other_games, discord, twitter, facebook, instagram, tiktok, twitch, picture_player_reverse } = req.body;
   connection.query(
-    'INSERT INTO players (player_name, picture_player, firstname, lastname, qualities, palmares, quotes, age, occupation, description_player, other_games, discord, twitter, facebook, instagram, tiktok, twitch) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-    [player_name, picture_player, firstname, lastname, qualities, palmares, quotes, age, occupation, description_player, other_games, discord, twitter, facebook, instagram, tiktok, twitch],
+    'INSERT INTO players (player_name, picture_player, firstname, lastname, qualities, palmares, quotes, age, occupation, description_player, other_games, discord, twitter, facebook, instagram, tiktok, twitch, picture_player_reverse) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+    [player_name, picture_player, firstname, lastname, qualities, palmares, quotes, age, occupation, description_player, other_games, discord, twitter, facebook, instagram, tiktok, twitch, picture_player_reverse],
     (err, result) => {
       if (err) {
         console.error(err);
         res.status(500).send('Error saving the player');
       } else {
         const id = result.insertId;
-        const createdPlayer = { player_name, picture_player, firstname, lastname, qualities, palmares, quotes, age, occupation, description_player, other_games, discord, twitter, facebook, instagram, tiktok, twitch };
+        const createdPlayer = { player_name, picture_player, firstname, lastname, qualities, palmares, quotes, age, occupation, description_player, other_games, discord, twitter, facebook, instagram, tiktok, twitch, picture_player_reverse };
         res.status(201).json(createdPlayer);
       }
     }
